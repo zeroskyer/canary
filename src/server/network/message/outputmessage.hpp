@@ -29,11 +29,11 @@ public:
 	void writePaddingAmount() {
 		uint8_t paddingAmount = 8 - (info.length % 8) - 1;
 		addPaddingBytes(paddingAmount);
-		add_header(paddingAmount);
+		add_header(paddingAmount, true);
 	}
 
 	void writeMessageLength() {
-		add_header(static_cast<uint16_t>((info.length - 4) / 8));
+		add_header(info.length);
 	}
 
 	void addCryptoHeader(bool addChecksum, uint32_t checksum) {
@@ -64,10 +64,19 @@ public:
 
 private:
 	template <typename T>
-	void add_header(T addHeader) {
+	void add_header(T addHeader, bool newProtocol = false) {
 		if (outputBufferStart < sizeof(T)) {
 			g_logger().error("[{}]: Insufficient buffer space for header!", __FUNCTION__);
 			return;
+		}
+
+		if (newProtocol) {
+			std::memmove(
+						&buffer[0], 
+						&buffer[1], 
+						info.length - 1
+				);
+			outputBufferStart--;
 		}
 
 		// Ensure at runtime that outputBufferStart >= sizeof(T)

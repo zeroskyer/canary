@@ -25,7 +25,7 @@ public:
 	// 2 bytes for unencrypted message size
 	// 4 bytes for checksum
 	// 1 byte for padding message size
-	static constexpr MsgSize_t INITIAL_BUFFER_POSITION = 7;
+	static constexpr MsgSize_t INITIAL_BUFFER_POSITION = 8;
 
 	int32_t decodeHeader();
 
