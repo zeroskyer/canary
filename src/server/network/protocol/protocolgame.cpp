@@ -248,6 +248,7 @@ namespace {
 ProtocolGame::ProtocolGame(const Connection_ptr &initConnection) :
 	Protocol(initConnection) {
 	version = CLIENT_VERSION;
+	setProtocolType(Protocol::ProtocolType::Game);
 }
 
 void ProtocolGame::AddItem(NetworkMessage &msg, uint16_t id, uint8_t count, uint8_t tier) const {
