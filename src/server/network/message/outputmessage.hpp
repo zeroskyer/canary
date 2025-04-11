@@ -72,10 +72,10 @@ private:
 
 		if (newProtocol) {
 			std::memmove(
-						&buffer[0], 
-						&buffer[1], 
-						info.length - 1
-				);
+				&buffer[0],
+				&buffer[1],
+				info.length - 1
+			);
 			outputBufferStart--;
 		}
 

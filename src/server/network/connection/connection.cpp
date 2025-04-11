@@ -112,8 +112,9 @@ void Connection::accept(Protocol_ptr protocolPtr) {
 		} else {
 			g_logger().warn("FALSE LOGIN");
 		}
-		eventProtocol->sendLoginChallenge(); 
-	}, __FUNCTION__, std::chrono::milliseconds(CONNECTION_WRITE_TIMEOUT * 1000).count());
+		eventProtocol->sendLoginChallenge();
+	},
+	                        __FUNCTION__, std::chrono::milliseconds(CONNECTION_WRITE_TIMEOUT * 1000).count());
 
 	acceptInternal(false);
 }
