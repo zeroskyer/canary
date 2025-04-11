@@ -219,7 +219,7 @@ void Connection::parseHeader(const std::error_code &error) {
 
 	uint16_t size = m_msg.getLengthHeader();
 	auto protocolType = protocol ? protocol->getProtocolType() : Protocol::ProtocolType::None;
- 	if (protocolType == Protocol::ProtocolType::Game) {
+	if (protocolType == Protocol::ProtocolType::Game) {
 		old = true;
 		g_logger().warn("ENTROU");
 		size = (size * 8) + 4;

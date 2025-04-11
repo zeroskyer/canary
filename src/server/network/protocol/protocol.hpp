@@ -83,7 +83,7 @@ protected:
 	ProtocolType getProtocolType() const {
 		return m_protocolType;
 	}
- 
+
 	void setProtocolType(ProtocolType type) {
 		m_protocolType = type;
 	}
